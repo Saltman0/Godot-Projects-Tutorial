@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg4s22j7b3hsn"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Player.cs" id="1_bcfdu"]
+[ext_resource type="Texture2D" uid="uid://dmmj38hsk21fg" path="res://graphics/player/player.png" id="1_fvbaq"]
+[ext_resource type="PackedScene" uid="uid://cmvavob6dme3a" path="res://Scenes/Entities/Entity.tscn" id="1_n3ik3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xglhf"]
+polygon = PackedVector2Array(-3, -56, 2, -58, 5, -58, 9, -58, 13, -56, 15, -53, 18, -49, 20, -45, 21, -45, 24, -42, 28, -38, 29, -37, 28, -35, 33, -27, 35, -27, 38, -27, 45, -23, 53, -15, 60, -8, 65, -8, 70, -9, 73, -8, 79, -4, 81, -2, 87, -2, 90, -2, 93, -1, 95, 1, 95, 3, 97, 5, 103, 4, 107, 4, 108, 5, 109, 7, 108, 9, 107, 10, 108, 10, 111, 8, 113, 8, 115, 10, 117, 13, 118, 17, 118, 20, 118, 28, 117, 29, 117, 32, 112, 37, 111, 37, 107, 34, 106, 34, 106, 36, 107, 37, 107, 40, 102, 40, 96, 40, 94, 38, 93, 38, 92, 39, 91, 40, 88, 44, 84, 47, 81, 47, 81, 53, 80, 54, 78, 56, 58, 56, 45, 56, 43, 54, 43, 52, 42, 51, 42, 48, 43, 47, 47, 44, 28, 44, 27, 43, 24, 45, 20, 47, 14, 49, 10, 50, 8, 50, 3, 53, -1, 56, -4, 57, -9, 59, -13, 61, -15, 62, -20, 62, -22, 63, -24, 64, -32, 64, -34, 62, -40, 62, -44, 60, -49, 58, -52, 54, -53, 51, -53, 48, -56, 45, -59, 40, -60, 36, -63, 35, -66, 32, -68, 28, -69, 23, -68, 21, -67, 19, -69, 18, -72, 15, -74, 11, -75, 9, -76, 5, -77, 2, -77, -12, -77, -15, -76, -19, -74, -23, -71, -26, -70, -28, -70, -31, -69, -34, -67, -36, -64, -39, -62, -41, -60, -42, -57, -43, -55, -44, -52, -45, -48, -45, -46, -44, -44, -45, -44, -48, -41, -50, -39, -51, -35, -53, -33, -54, -28, -54, -28, -52, -26, -53, -21, -56, -15, -57, -7, -57, -6, -56, -5, -56)
+
+[node name="Player" groups=["Players"] instance=ExtResource("1_n3ik3")]
+collision_layer = 1
+collision_mask = 63
+script = ExtResource("1_bcfdu")
+_nbLaser = 5
+_nbGrenade = 1
+_speed = 600.0
+
+[node name="EntitySprite" parent="." index="0"]
+position = Vector2(21, 3)
+rotation = 1.5708
+texture = ExtResource("1_fvbaq")
+
+[node name="EntityLightOccluder" parent="." index="2"]
+occluder = SubResource("OccluderPolygon2D_xglhf")
+
+[node name="PlayerMarker" type="Marker2D" parent="." index="3"]
+position = Vector2(175, 20)
+
+[node name="LaserTimer" type="Timer" parent="." index="4"]
+wait_time = 0.5
+one_shot = true
+
+[node name="GrenadeTimer" type="Timer" parent="." index="5"]
+wait_time = 2.0
+one_shot = true

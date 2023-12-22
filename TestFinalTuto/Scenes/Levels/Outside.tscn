@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2mpgo6wj3phv"]
+
+[ext_resource type="PackedScene" uid="uid://ckkltxpfua55t" path="res://Scenes/Levels/Level.tscn" id="1_xakm3"]
+[ext_resource type="Script" path="res://Scripts/Levels/Outside.cs" id="2_c2dda"]
+[ext_resource type="Texture2D" uid="uid://b6s8v6pjeweba" path="res://graphics/ground/stones.png" id="2_kkjba"]
+[ext_resource type="PackedScene" uid="uid://bwdh0uqqmdpu1" path="res://Scenes/Building/House.tscn" id="3_38gt3"]
+[ext_resource type="PackedScene" uid="uid://ba2t03rvuv1sn" path="res://Scenes/Entities/Enemies/Scout.tscn" id="5_jlerx"]
+[ext_resource type="PackedScene" uid="uid://s2c3ig2jvftg" path="res://Scenes/Entities/Enemies/Drone.tscn" id="6_vbjgu"]
+
+[sub_resource type="TileSet" id="TileSet_icovf"]
+tile_size = Vector2i(390, 390)
+
+[node name="Outside" instance=ExtResource("1_xakm3")]
+script = ExtResource("2_c2dda")
+
+[node name="Soil" type="Sprite2D" parent="." index="0"]
+texture_repeat = 2
+texture = ExtResource("2_kkjba")
+region_enabled = true
+region_rect = Rect2(-4100, -4350, 10000, 10000)
+metadata/_edit_lock_ = true
+
+[node name="House" parent="." index="1" instance=ExtResource("3_38gt3")]
+position = Vector2(-1053, -1189)
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
+tile_set = SubResource("TileSet_icovf")
+format = 2
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("5_jlerx")]
+position = Vector2(-720, 516)
+
+[node name="Drone" parent="Enemies" index="1" instance=ExtResource("6_vbjgu")]
+position = Vector2(1748, 1023)
+
+[node name="Player" parent="." index="5"]
+position = Vector2(671, -229)

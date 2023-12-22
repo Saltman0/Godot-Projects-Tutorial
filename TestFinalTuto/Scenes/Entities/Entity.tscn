@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmvavob6dme3a"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Entity.cs" id="1_s6f87"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6neg"]
+radius = 80.2122
+
+[node name="Entity" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_s6f87")
+
+[node name="EntitySprite" type="Sprite2D" parent="."]
+
+[node name="EntityCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a6neg")
+
+[node name="EntityLightOccluder" type="LightOccluder2D" parent="."]
