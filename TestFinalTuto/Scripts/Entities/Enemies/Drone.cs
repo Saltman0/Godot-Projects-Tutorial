@@ -23,7 +23,6 @@ public partial class Drone : Enemy
 	{
 		if (_canMove)
 		{
-			Console.WriteLine(_player.Position);
 			Velocity = Position.DirectionTo(_player.Position) * Speed;
 			MoveAndSlide();
 		}
@@ -31,13 +30,11 @@ public partial class Drone : Enemy
 	
 	public void OnDetectionAreaBodyEntered(Player player)
 	{
-		Console.WriteLine("joueur détecté");
 		_canMove = true;
 	}
 
 	public void OnDetectionAreaBodyExited(Player player)
 	{
-		Console.WriteLine("joueur sorti");
 		_canMove = false;
 	}
 	
@@ -48,7 +45,6 @@ public partial class Drone : Enemy
 	
 	public void OnExplosionAreaBodyEntered(Player player)
 	{
-		Console.WriteLine("DANs l'explosion");
 		player.Health -= _explosionDamage;
 	}
 	

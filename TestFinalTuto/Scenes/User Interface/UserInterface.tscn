@@ -69,14 +69,10 @@ texture = ExtResource("3_pmi4p")
 expand_mode = 4
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -162.0
-offset_top = 30.0
-offset_right = 138.0
-offset_bottom = 60.0
-grow_horizontal = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 40.0
 value = 100.0
 texture_under = ExtResource("4_31vxu")
 texture_over = ExtResource("5_4l7dy")

@@ -35,6 +35,10 @@ public partial class Player : Entity
 		get => _health;
 		set {
 			_health = value;
+			if (_health <= 0)
+			{
+				IsDead = true;
+			}
 			EmitSignal(SignalName.HealthUpdated, _health);
 		}
 	}
@@ -44,7 +48,14 @@ public partial class Player : Entity
 		get => _isDead;
 		set {
 			_isDead = value;
-			Modulate = new Color("FF0000");
+			if (_isDead)
+			{
+				Modulate = new Color("FF0000");
+			}
+			else
+			{
+				Modulate = new Color("FFFFFF");
+			}
 		}
 	}
 	
@@ -72,10 +83,6 @@ public partial class Player : Entity
 	public void Hit(int damage)
 	{
 		Health -= damage;
-		if (Health <= 0)
-		{
-			IsDead = true;
-		}
 	}
 
 	public override void _Ready()
